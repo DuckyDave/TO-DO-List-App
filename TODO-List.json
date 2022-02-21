@@ -1,0 +1,29 @@
+[
+{
+    "id": 1,
+    "taskName": "Passejar el gos",
+    "start": "09-02-2021 17:02:57",
+    "end": "09-02-2021 18:05:34",
+    "state": "pending",
+    "userFirstName": "Josep",
+    "userLastName": "Cardona Jimenez"
+},
+{
+    "id": 2,
+    "taskName": "Comprar queviures al supermercat",
+    "start": "09-02-2021 10:30:00",
+    "end": "09-02-2021 11:54:08",
+    "state": "on execution",
+    "userFirstName": "Imma",
+    "userLastName": "Perez Sanchez"
+},
+{
+    "id": 3,
+    "taskName": "Anar al banc a treure diners",
+    "start": "10-02-2021 09:02:57",
+    "end": "10-02-2021 09:15:34",
+    "state": "pending",
+    "userFirstName": "Josep",
+    "userLastName": "Cardona Jimenez"
+}
+]
