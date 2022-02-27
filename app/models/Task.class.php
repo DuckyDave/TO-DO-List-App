@@ -58,6 +58,16 @@ class Task {
 	}
 	
 	/**
+	 * Get the 'id' of the last task inseted into the database
+	 */
+	public function getLastId()
+	{
+		$lastId = $this->_database->lastInsertId();
+
+		return $lastId;
+	}
+
+	/**
 	 * Saves the current data to the database. If an key named "id" is given,
 	 * an update will be issued.
 	 * @param array $data the data to save
@@ -88,16 +98,16 @@ class Task {
 			
 			$sql .= ' where id = ?';// . $data['id'];
 			
-			$statement = $this->_dbh->prepare($sql);
+			$statement = $this->_database->prepare($sql);
 			return $statement->execute($values);
 		}
 		else {
 			$keys = array_keys($data);
 			
-			$sql = 'insert into ' . $this->_table . '(';
+			$sql = 'INSERT INTO task (';
 			$sql .= implode(',', $keys);
 			$sql .= ')';
-			$sql .= ' values (';
+			$sql .= ' VALUES (';
 			
 			$dataValues = array_values($data);
 			$first = true;
@@ -111,9 +121,9 @@ class Task {
 			
 			$sql .= ')';
 			
-			$statement = $this->_dbh->prepare($sql);
+			$statement = $this->_database>prepare($sql);
 			if ($statement->execute($values)) {
-				return $this->_dbh->lastInsertId();
+				return $this->_database->lastInsertId();
 			}
 		}
 		
@@ -127,7 +137,7 @@ class Task {
 	 */
 	public function delete($id)
 	{
-		$statement = $this->_dbh->prepare("DELETE FROM task WHERE id = ?");
+		$statement = $this->_database->prepare("DELETE FROM task WHERE id = ?");
 		return $statement->execute(array($id));
 	}
 }
