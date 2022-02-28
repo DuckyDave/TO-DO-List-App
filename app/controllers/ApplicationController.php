@@ -29,4 +29,41 @@ class ApplicationController extends Controller
         //$this->view->render('/task/index.phtml');
        
     } 
+
+    public function addAction()
+    {
+        //call to view
+        
+        // $this->view->render('/task/add.phtml');
+
+        
+            // call to view
+            // set the layout (template) of the view
+            $this->view->setLayout('addFormLayout');
+            // render the view using the proper view script
+            $this->view->render('/task/add.phtml');
+            // call to model
+            // start the connection to the database
+            $task = new Task();
+            // // get the data from the view
+            
+            $data = array(
+                        'description' => $_POST['description'],
+                        'start' => $_POST['start'],
+                        'end' => $_POST['end'],
+                        'state' => $_POST['state'],
+                        'userFirstName' => $_POST['userFirstName'],
+                        'userLastName' => $_POST['userLastName']
+                    );
+
+            
+            // save them to the database
+            $task->save($data);
+            // redirect to 'index page'
+            header ('location: index');
+        
+    
+
+
+    }
 }
