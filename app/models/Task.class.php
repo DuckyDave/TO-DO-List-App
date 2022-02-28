@@ -121,7 +121,7 @@ class Task {
 			
 			$sql .= ')';
 			
-			$statement = $this->_database>prepare($sql);
+			$statement = $this->_database->prepare($sql);
 			if ($statement->execute($values)) {
 				return $this->_database->lastInsertId();
 			}
