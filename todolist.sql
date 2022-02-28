@@ -5,7 +5,7 @@ USE todolist;
 /* detalls tasques */
 CREATE TABLE IF NOT EXISTS task (
 	id INT UNSIGNED AUTO_INCREMENT,
-    task_description VARCHAR(50) NOT NULL,
+    task_description VARCHAR(100) NOT NULL,
     date_time_start DATETIME NOT NULL,
     date_time_end DATETIME NOT NULL,
     task_state ENUM('Pending','On execution','Finished'),
