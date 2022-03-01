@@ -25,8 +25,7 @@ class ApplicationController extends Controller
         $this->view->data = $data['taskList'];
         //set the layout (template) of the view
         $this->view->setLayout('indexLayout'); //arribem a views/scripts/application/index.phtml";
-        //render the view using the proper view script
-        //$this->view->render('/task/index.phtml');
+        
        
     } 
 
