@@ -68,4 +68,18 @@
             // render the view using the proper view script
             $this->view->render('/task/update.phtml');
         }
+
+
+        public function deleteAction($id)
+	 {
+            
+            $task = new Task();
+
+            $task->delete($id); 
+           
+            // redirect to 'index page'
+            header ('Location: index');
+        
+
+     }
         
