@@ -56,4 +56,16 @@
             $task->save($data = $data);
 
             header ('Location: index');
+
+            public function updateAction()
+
+        {
+            // call to model
+            $task = new Task();
+            // fetch the data, if any 
+            //set the layout (template) of the view
+            $this->view->setLayout('updateFormLayout');
+            // render the view using the proper view script
+            $this->view->render('/task/update.phtml');
+        }
         
