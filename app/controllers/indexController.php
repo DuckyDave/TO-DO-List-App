@@ -62,7 +62,8 @@
         {
             // call to model
             $task = new Task();
-            // fetch the data, if any 
+            $data["id"] = $id;
+            $data["task"] = $task->fetchOne($id);
             //set the layout (template) of the view
             $this->view->setLayout('updateFormLayout');
             // render the view using the proper view script
