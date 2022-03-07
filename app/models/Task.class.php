@@ -50,11 +50,9 @@ class Task {
 		
 		$statement = $this->_database->prepare($sql);
 
-		$_result = $this->_database->query($sql);
+		$statement->execute(array($id));
 
-		$row = $_result->fetch(PDO::FETCH_ASSOC);
-		
-		return $row;
+		return $statement->fetch(PDO::FETCH_ASSOC);
 	}
 	
 	/**
