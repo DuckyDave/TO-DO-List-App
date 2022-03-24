@@ -1,0 +1,40 @@
+<?php
+
+?>
+
+<h3>ADD TASK</h3>
+<form method = "POST" action = "<?php ?>" enctype = "">
+    <p>
+        <label for="id">Task ID</label>
+        <input type="number" id="task_id" name="task_id" value="<?php echo $row->task_id; ?> hidden">
+    </p>
+    <p>
+        <label for = "taskName">Task Name: </label>
+        <input type = "text" id = "taskName" name = "taskName">
+    </p>
+    <p>
+        <label for = "start">Start: </label>
+        <input type = "datetime-local" id = "start" name = "start">
+    </p>
+    <p>
+        <label for = "end">End: </label>
+        <input type = "datetime-local" id = "end" name = "end">
+    </p>
+    <p>
+        <label for = "state">State: </label>
+        <select id = "state">
+            <option value = "Pending">Pending</option>
+            <option value = "On execution">On execution</option>
+            <option value = "Finished">Finished</option>
+        </select>
+    </p>
+    <p>
+        <label for = "userFirstName">User First Name: </label>
+        <input type = "text" id = "userFirstName" name = "userfirstName">
+    </p>
+    <p>
+        <label for = "userLastName">User Last Name: </label>
+        <input type = "text" id = "userLastName" name = "userLastName">
+    </p>
+        <input type = "submit" name = "save" value = "Save">
+</form>

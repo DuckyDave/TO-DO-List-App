@@ -1,0 +1,33 @@
+<table>
+        <tr>
+            <th>Task description</th>
+            <th>Start</th>
+            <th>End</th>
+			<th>State</th>
+			<th>User</th>
+           
+            <th></th>
+            <th></th>
+        </tr>
+<?php
+if ($this->data) {
+    $tasks = $this->data;
+    foreach ($tasks as $task) {
+        // cast the DateTime objects to strings, formatting them
+        $_start = new DateTime($task->date_time_start);
+        $_start = $_start->format('d-m-Y H:i');
+        $_end = new DateTime($task->date_time_end);
+        $_end = $_end->format('d-m-Y H:i');
+       
+        echo  "<tr><td>"."Task Description:  ". $task->task_description . "</td>";
+        echo  "<td>"."Start: " . $_start . "</td>";
+        echo  "<td>"."End: " . $_end . "</td>";
+        echo  "<td>"."State: "  . $task->task_state . "</td>";
+        echo  "<td>"."User: "  . $task->user_first_name . ' ' . $task->user_last_name .  "</td>";
+        
+		echo "<td>"."<a href='/task/delete?id=".$task['id']."'>Borrar</a></td></tr>";
+        echo "<td>"."<a href='/task/update?id=".$task['id']."'>Modificar</a></td></tr>";
+     
+    }
+} ?>  
+	</table>
