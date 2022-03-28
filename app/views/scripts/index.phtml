@@ -1,3 +1,4 @@
+<div>
 <table>
         <tr>
             <th>Task description</th>
@@ -6,6 +7,7 @@
 			<th>State</th>
 			<th>User</th>
            
+            <th></th>
             <th></th>
             <th></th>
         </tr>
@@ -24,10 +26,11 @@ if ($this->data) {
         echo  "<td>"."End: " . $_end . "</td>";
         echo  "<td>"."State: "  . $task->task_state . "</td>";
         echo  "<td>"."User: "  . $task->user_first_name . ' ' . $task->user_last_name .  "</td>";
-        
-		echo "<td>"."<a href='/task/delete?id=".$task['id']."'>Borrar</a></td></tr>";
-        echo "<td>"."<a href='/task/update?id=".$task['id']."'>Modificar</a></td></tr>";
+        echo  "<td>"."<a href='/show?id=' . $task->id . '>Show</a></td>";
+		echo "<td>"."<a href='/delete?id=".$task->id."'>Borrar</a></td>";
+        echo "<td>"."<a href='/update?id=".$task->id."'>Modificar</a></td></tr>";
      
     }
 } ?>  
 	</table>
+    </div>

@@ -1,0 +1,41 @@
+
+<div style = "margin: 10px;">
+    <form class="m-11 float-left block h-auto w-fit p-4 bg-yellow-200 opacity-75 shadow-2xl drop-shadow-lg shadow-stone-800" method = "POST" action = "update" enctype = "multipart/form-data">
+        <p class="decoration-2 font-serif">
+            <label for = "description">Task Description</label>
+            <textarea rows = 2 cols = 50 id = "description" name = "description"><?php ?></textarea>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "start">Start</label>
+            <input type = "datetime-local" id = "start" name = "start"><?php ?></input>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "end">End</label>
+            <input type = "datetime-local" id = "end" name = "end"><?php ?></input>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "state">State: </label>
+            <input type = "text" id = "oldState" name = "state" readonly><?php ?></input>
+            <select id = "newState">
+                <option value = "Pending">Pending</option>
+                <option value = "On execution">On execution</option>
+                <option value = "Finished">Finished</option>
+            </select>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "user_first_name">User First Name</label>
+            <input type = "text" id = "user_first_name" name = "user_first_name" readonly></input>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "user_last_name">User Last Name</label>
+            <input type = "text" id = "user_last_name" name = "user_last_name" readonly></input>
+        </p>
+        <br>
+        <input class="bg-teal-700 border border-teal-800 shadow-xl shadow-stone-800 drop-shadow-2xl hover:bg-lime-500 hover:border-lime-500 rounded-lg" type = "submit" name = "update" value = "UPDATE">
+    </form>
+</div>

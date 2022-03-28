@@ -2,39 +2,44 @@
 
 ?>
 
-<h3>ADD TASK</h3>
-<form method = "POST" action = "<?php ?>" enctype = "">
-    <p>
-        <label for="id">Task ID</label>
-        <input type="number" id="task_id" name="task_id" value="<?php echo $row->task_id; ?> hidden">
-    </p>
-    <p>
-        <label for = "taskName">Task Name: </label>
-        <input type = "text" id = "taskName" name = "taskName">
-    </p>
-    <p>
-        <label for = "start">Start: </label>
-        <input type = "datetime-local" id = "start" name = "start">
-    </p>
-    <p>
-        <label for = "end">End: </label>
-        <input type = "datetime-local" id = "end" name = "end">
-    </p>
-    <p>
-        <label for = "state">State: </label>
-        <select id = "state">
-            <option value = "Pending">Pending</option>
-            <option value = "On execution">On execution</option>
-            <option value = "Finished">Finished</option>
-        </select>
-    </p>
-    <p>
-        <label for = "userFirstName">User First Name: </label>
-        <input type = "text" id = "userFirstName" name = "userfirstName">
-    </p>
-    <p>
-        <label for = "userLastName">User Last Name: </label>
-        <input type = "text" id = "userLastName" name = "userLastName">
-    </p>
-        <input type = "submit" name = "save" value = "Save">
-</form>
+
+<div style = "margin: 10px;">
+    <form class = "m-11 float-left block h-auto w-fit p-4 bg-yellow-200 opacity-75 shadow-2xl drop-shadow-lg shadow-stone-800" method = "POST" action = "add" enctype = "multipart/form-data" autocomplete = "off">
+        <p class="decoration-2 font-serif">
+            <label for = "description">Task Description: </label>
+            <textarea rows = 2 cols = 50 id = "description" name = "description" placeholder = "Descripcion de la tarea" autofocus required></textarea>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "start">Start: </label>
+            <input type = "datetime-local" id = "start" name = "start" required></input>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "end">End: </label>
+            <input type = "datetime-local" id = "end" name = "end" required></input>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "state">State: </label>
+            <select id = "state" name ="state" required>
+                <option value = "Pending">Pending</option>
+                <option value = "On execution">On execution</option>
+                <option value = "Finished">Finished</option>
+            </select>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "userFirstName">User First Name: </label>
+            <input type = "text" id = "userFirstName" name = "userFirstName" placeholder = "nom de la persona (ex: Antoni)" size = 20 required></input>
+        </p>
+        <br>
+        <p class="decoration-2 font-serif">
+            <label for = "userLastName">User Last Name: </label>
+            <input type = "text" id = "userLastName" name = "userLastName" placeholder = "Cognoms de la persona (ex: Vidal Canals)" size = 50 required></input>
+        </p>
+        <br>
+        <input class="bg-teal-700 border border-teal-800 shadow-xl shadow-stone-800 drop-shadow-2xl hover:bg-lime-500 hover:border-lime-500 rounded-lg" type = "submit" name = "save" value = "SAVE">
+    </form>
+</div>
+
