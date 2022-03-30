@@ -1,16 +1,3 @@
-<div>
-<table>
-        <tr>
-            <th>Task description</th>
-            <th>Start</th>
-            <th>End</th>
-			<th>State</th>
-			<th>User</th>
-           
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
 <?php
 if ($this->data) {
     $tasks = $this->data;
@@ -20,17 +7,12 @@ if ($this->data) {
         $_start = $_start->format('d-m-Y H:i');
         $_end = new DateTime($task->date_time_end);
         $_end = $_end->format('d-m-Y H:i');
-       
-        echo  "<tr><td>"."Task Description:  ". $task->task_description . "</td>";
-        echo  "<td>"."Start: " . $_start . "</td>";
-        echo  "<td>"."End: " . $_end . "</td>";
-        echo  "<td>"."State: "  . $task->task_state . "</td>";
-        echo  "<td>"."User: "  . $task->user_first_name . ' ' . $task->user_last_name .  "</td>";
-        echo  "<td>"."<a href='/show?id=' . $task->id . '>Show</a></td>";
-		echo "<td>"."<a href='/delete?id=".$task->id."'>Borrar</a></td>";
-        echo "<td>"."<a href='/update?id=".$task->id."'>Modificar</a></td></tr>";
-     
+        echo '<div><ul>
+        <li class="ml-8 float-left block h-auto w-fit p-8 bg-yellow-200 opacity-75 shadow-2xl drop-shadow-lg shadow-stone-800">
+          <p class="decoration-2 font-serif">Task Description:<br>'  . $task->task_description . '</p>
+          <p class="decoration-2 font-serif">State: '  . $task->task_state . '</p>
+          <br>
+          <button class="bg-teal-700 border border-teal-800 shadow-xl shadow-stone-800 drop-shadow-2xl hover:bg-lime-500 hover:border-lime-500 rounded-lg"><a class="text-white hover:text-orange-600 font-mono" href="show?id=' . $task->id . '">SHOW</a></button>
+      </ul></div>';
     }
-} ?>  
-	</table>
-    </div>
+} ?>
