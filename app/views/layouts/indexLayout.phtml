@@ -7,7 +7,7 @@
 	<title>TASK LIST</title>
 	<script src="https://cdn.tailwindcss.com/?plugings=typography,forms"></script>
 </head>
-<body class="bg-gradient-to-r from-green-100 via-emerald-200 to-teal-600 bg-scroll">
+<body class="bg-gradient-to-r from-green-100 via-emerald-200 to-teal-600">
 	
 	<!-- header -->
 	<header class="bg-gradient-to-r from-lime-400 via-orange-300 to-orange-600 p-5">
@@ -17,9 +17,9 @@
 		
 	</header>
 	<div class="bg-white p-2 "></div>
-	<div>
+	<div class="overflow-auto flex flex-wrap">
 	<!-- content of the body -->
-	<?php echo $this->content(); ?>
+	<?php echo $this->content(); //dentro este <div> se ha añadido scroll auto y posicionamiento flex?>
     </div>
 
 	<!-- footer -->
