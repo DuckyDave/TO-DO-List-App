@@ -8,7 +8,7 @@ class Task extends Model
 {
 
     protected $_ddh = null;
-    private $_table = "";
+    protected $_table = "";
 
     public function __construct() {
 
@@ -34,7 +34,7 @@ class Task extends Model
 	{
 		$sql = 'select * from ' . $this->_table;
 
-		$statement = $this->_database->prepare($sql);
+		$statement = $this->_dbh->prepare($sql);
 		$statement->execute(array());
 		
 		while ($row = $statement->fetch(PDO::FETCH_OBJ))
