@@ -1,0 +1,42 @@
+<?php $task = $this->data; ?>
+<form class="m-6 float-left block h-auto w-fit p-4 bg-yellow-200 opacity-75 shadow-2xl drop-shadow-lg shadow-stone-800" method = "POST" action = "update" enctype = "multipart/form-data">
+    <p><input type ="text" name = "id" value = '<?php echo $task['id']; ?>' hidden></p>
+    <p class="decoration-2 font-serif">
+        <label for = "description">Task Description</label>
+        <textarea rows = 2 cols = 50 id = "description" name = "description"><?php echo $task['task_description']; ?></textarea>
+    </p>
+    <br>
+    <p class="decoration-2 font-serif">
+        <label for = "start">Start</label>
+        <input type = "datetime-local" id = "start" name = "start" value = '<?php echo $task['date_time_start']; ?>'></input>
+    </p>
+    <br>
+    <p class="decoration-2 font-serif">
+        <label for = "end">End</label>
+        <input type = "datetime-local" id = "end" name = "end" value = '<?php echo $task['date_time_end']; ?>'></input>
+    </p>
+    <br>
+    <p class="decoration-2 font-serif">
+        <label for = "oldState">Old state: </label>
+        <input type = "text" id = "oldState" name = "oldState" value ='<?php echo $task['task_state']; ?>' readonly></input>
+        <label for = state>New state: </label>
+        <select id = "state" name = "state">
+            <option value = "Pending">Pending</option>
+            <option value = "On execution">On execution</option>
+            <option value = "Finished">Finished</option>
+        </select>
+    </p>
+    <br>
+    <p class="decoration-2 font-serif">
+        <label for = "userFirstName">User First Name</label>
+        <input type = "text" id = "userFirstName" name = "userFirstName" value = '<?php echo $task['user_first_name']; ?>'></input>
+    </p>
+    <br>
+    <p class="decoration-2 font-serif">
+        <label for = "userLastName">User Last Name</label>
+        <input type = "text" id = "userLastName" name = "userLastName" value = '<?php echo $task['user_last_name']; ?>'></input>
+    </p>
+    <br>
+    <input class="bg-teal-700 border border-teal-800 shadow-xl shadow-stone-800 drop-shadow-2xl hover:bg-lime-500 hover:border-lime-500 rounded-lg" type = "submit" name = "update" value = "UPDATE">
+    <button class="float-right bg-teal-700 border border-teal-800 shadow-xl shadow-stone-800 drop-shadow-2xl hover:bg-lime-500 hover:border-lime-500 rounded-lg"><a class="text-white hover:text-orange-600 font-mono" href="/web">BACK</a></button>
+</form>
