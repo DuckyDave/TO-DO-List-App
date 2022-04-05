@@ -116,10 +116,10 @@ class TaskController extends ApplicationController
 
             // call to model
             // start the connection to the database
-            $task = new Task();
+            $model = new Task();
             // update the task in the database
             // if OK, redirects to the index page
-            if($task->save($data))
+            if($model->save($data))
             {
                 header('Location: /web');
             }
@@ -134,27 +134,33 @@ class TaskController extends ApplicationController
         // start the connection tot the database
         $model = new Task();
         // fetch the data
-        $data['delete'] = $model->fetchOne((int) $this->_getParam('id'));
+        $data = $model->fetchOne((int) $this->_getParam('id'));
         // call to view
         // set the data for the view
-        $this->view->data = $data['delete'];
+        $this->view->data = $data;
         // set the layout (template) of the view
         $this->view->setLayout('deleteTaskLayout');
         // render the view using the proper view script
         // $this->view->render('/task/delete.phtml');
         
-        // once the user hits the "UPDATE" button
+        // once the user hits the "DELETE" button
         // if the request method is POST, then
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
+            // get the 'id' from the view
+            // before deleting
+            $data = array(
+                'id' => $_POST['id'],
+            );
             // call to model
             // start the connection to the database
-            $task = new Task();
+            $model = new Task();
             // delete the task from the database
             // if OK, redirects to the index page
-            if ($model->delete((int) $this->_getParam('id')))
+            print_r($model->delete((int) $data['id']));
+            if ($model->delete($data['id']))
             {
-                header('Location: index');
+                header('Location: /web');
             }
         }
     }
