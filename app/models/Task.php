@@ -48,7 +48,13 @@ class Task extends Model
 
     public function fetchOne($id)
 	{
-		parent::fetchOne($id);
+		$sql = 'select * from ' . $this->_table;
+		$sql .= ' where id = ?';
+		
+		$statement = $this->_dbh->prepare($sql);
+		$statement->execute(array($id));
+		
+		return $statement->fetch(PDO::FETCH_ASSOC);
 	}
 
 	/**
@@ -59,7 +65,59 @@ class Task extends Model
 	 */
 	public function save($data = array())
 	{
-		parent::save($data = array());
+		$sql = '';
+		
+		$values = array();
+		
+		if (array_key_exists('id', $data)) {
+			$sql = 'update ' . $this->_table . ' set ';
+			
+			$first = true;
+			foreach($data as $key => $value) {
+				if ($key != 'id') {
+					$sql .= ($first == false ? ',' : '') . ' ' . $key . ' = ?';
+					
+					$values[] = $value;
+					
+					$first = false;
+				}
+			}
+			
+			// adds the id as well
+			$values[] = $data['id'];
+			
+			$sql .= ' where id = ?';// . $data['id'];
+			
+			$statement = $this->_dbh->prepare($sql);
+			return $statement->execute($values);
+		}
+		else {
+			$keys = array_keys($data);
+			
+			$sql = 'insert into ' . $this->_table . '(';
+			$sql .= implode(',', $keys);
+			$sql .= ')';
+			$sql .= ' values (';
+			
+			$dataValues = array_values($data);
+			$first = true;
+			foreach($dataValues as $value) {
+				$sql .= ($first == false ? ',?' : '?');
+				
+				$values[] = $value;
+				
+				$first = false;
+			}
+			
+			$sql .= ')';
+			
+			$statement = $this->_dbh->prepare($sql);
+			if ($statement->execute($values)) {
+				return $this->_dbh->lastInsertId();
+			}
+		}
+		
+		return false;
 	}
 
 	/**
