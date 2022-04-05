@@ -13,10 +13,11 @@ class TaskController extends ApplicationController
         // call to model
         $model = new Task();
         // fetch the data, if any
-        $data['taskList'] = $model->fetchAll();
+        $data = $model->fetchAll();
+
         // call to view
         // set the data for the view
-        $this->view->data = $data['taskList'];
+        $this->view->data = $data;
         // set the layout (template) of the view
         $this->view->setLayout('indexLayout');
         // render the view using the proper view script
@@ -31,6 +32,7 @@ class TaskController extends ApplicationController
         $this->view->setLayout('addTaskLayout');
         // render the view using the proper view script
         // $this->view->render('/task/add.phtml');
+
         // once the user hits the "SAVE" button, send the data
         // if the request method is POST, then
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -52,25 +54,25 @@ class TaskController extends ApplicationController
             // if OK, redirects to the index page
             if($model->save($data))
             {
-                header('Location: index');
-            }
-        
-        }
-        
+                header('Location: /web');
+            }   
+        }  
     }
 
     public function ShowAction()
     {
-         // get the 'id' of the task 
+        // get the 'id' of the task 
         //(int) ($this->_getParam('id'));
+
         // call to model
         // start the connection tot the database
         $model = new Task();
         // fetch the data
-        $data['show'] = $model->fetchOne($this->_getParam('id'));
+        $data = $model->fetchOne($this->_getParam('id'));
+
         // call to view
         // set the data for the view
-        $this->view->data = $data['show'];
+        $this->view->data = $data;
         // set the layout (template) of the view
         $this->view->setLayout('showTaskLayout');
         // render the view using the proper view script
@@ -81,14 +83,16 @@ class TaskController extends ApplicationController
     {
         // get the 'id' of the task 
         //(int) ($this->_getParam('id'));
+
         // call to model
         // start the connection tot the database
         $model = new Task();
         // fetch the data
-        $data['update'] = $model->fetchOne($this->_getParam('id'));
+        $data = $model->fetchOne($this->_getParam('id'));
+        
         // call to view
         // set the data for the view
-        $this->view->data = $data['update'];
+        $this->view->data = $data;
         // set the layout (template) of the view
         $this->view->setLayout('updateTaskLayout');
         // render the view using the proper view script
@@ -109,18 +113,17 @@ class TaskController extends ApplicationController
                 'user_first_name' => trim($_POST['userFirstName']),
                 'user_last_name' => trim($_POST['userLastName'])
             );
+
+            // call to model
+            // start the connection to the database
+            $task = new Task();
+            // update the task in the database
+            // if OK, redirects to the index page
+            if($task->save($data))
+            {
+                header('Location: /web');
+            }
         }
-        // call to model
-        // start the connection to the database
-        $task = new Task();
-        // update the task in the database
-        // if OK, redirects to the index page
-        if($task->save($data))
-        {
-            header('Location: index');
-        }
-        
-        
     }
 
     public function deleteAction()
@@ -144,26 +147,15 @@ class TaskController extends ApplicationController
         // if the request method is POST, then
         if($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            // get the data from the view (sent by the user)
-            // and sanitize them before updating
-            $data = array(
-                'id' => $_POST['id'],
-                'task_description' => trim($_POST['description']),
-                'date_time_start' => $_POST['start'],
-                'date_time_end' => $_POST['end'],
-                'task_state' => $_POST['state'],
-                'user_first_name' => trim($_POST['userFirstName']),
-                'user_last_name' => trim($_POST['userLastName'])
-            );
-        }
-        // call to model
-        // start the connection to the database
-        $task = new Task();
-        // delete the task from the database
-        // if OK, redirects to the index page
-        if ($model->delete((int) $this->_getParam('id')))
-        {
-            header('Location: index');
+            // call to model
+            // start the connection to the database
+            $task = new Task();
+            // delete the task from the database
+            // if OK, redirects to the index page
+            if ($model->delete((int) $this->_getParam('id')))
+            {
+                header('Location: index');
+            }
         }
     }
 
