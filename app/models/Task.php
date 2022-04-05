@@ -9,6 +9,7 @@ class Task extends Model
 
     protected $_ddh = null;
     protected $_table = "";
+	protected $_taskList;
 
     public function __construct() {
 
@@ -39,10 +40,10 @@ class Task extends Model
 		
 		while ($row = $statement->fetch(PDO::FETCH_OBJ))
 		{
-			$_taskList[] = $row;
+			$this->_taskList[] = $row;
 		}
 		
-		return $_taskList;
+		return $this->_taskList;
 	}
 
     public function fetchOne($id)
