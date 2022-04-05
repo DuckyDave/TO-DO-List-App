@@ -1,0 +1,16 @@
+<?php
+$task = $this->data;
+// cast the DateTime objects to strings, formatting them
+$_start = new DateTime($task['date_time_start']);
+$_start = $_start->format('d-m-Y H:i');
+$_end = new DateTime($task['date_time_end']);
+$_end = $_end->format('d-m-Y H:i');
+?>
+<div class="m-6 float-left block h-auto w-fit p-4 bg-yellow-200 opacity-75 shadow-2xl drop-shadow-lg shadow-stone-800">
+    <p class="decoration-2 font-serif">Task Description:<br><?php echo $task['task_description'];?></p>
+    <p class="decoration-2 font-serif">Start: <?php echo $_start; ?></p>
+    <p class="decoration-2 font-serif">End: <?php echo $_end; ?></p>
+    <p class="decoration-2 font-serif">State: <?php echo $task['task_state']; ?></p>
+    <p class="decoration-2 font-serif">User: <?php echo $task['user_first_name'] . ' ' . $task['user_last_name']; ?></p>
+    <button class="float-right bg-teal-700 border border-teal-800 shadow-xl shadow-stone-800 drop-shadow-2xl hover:bg-lime-500 hover:border-lime-500 rounded-lg"><a class="text-white hover:text-orange-600 font-mono" href="/web">BACK</a></button>
+</div>
